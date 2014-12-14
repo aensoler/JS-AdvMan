@@ -1,0 +1,86 @@
+<!--
+-- @author David Soler <aensoler@gmail.com>
+-->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<ol class="breadcrumb">
+				<li><a href="#main">Index</a></li>
+			</ol>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">0.1 - Variables, constantes, enums...</h3>
+				</div>
+				<div class="panel-body">
+					<p class="text-justify"><strong>En JavaScript únicamente se pueden emplear variables.</strong> Es cierto que existe una palabra reservada para especificar una constante <code>const</code> sin embargo, es muy recomendable no emplearla ya que Internet Explorer no la reconoce como tal.</p>
+					<p class="text-justify">Para ampliar el tipo de variables se suele seguir un convenio de nombrado ampliamente aceptado dentro de la comunidad.</p>
+					<pre><code class="language-javascript">var nombreDeVariable;
+var nombreDeFuncion;
+var NombreDeClase;
+var NombreDeEnum;
+var nombreDelMetodo;
+var NOMBRE_DE_CONSTANTE;</code></pre>
+					<p class="text-justify">Se entiende como buena programación declarar al principio de cada bloque las variables antes de su uso. Ayuda considerablemente el control y entendimiento del código, evitando que existan variables camufladas. También evita en un futuro fallos en la gestión de la memoria, algo que es bueno tener en cuenta desde el principio.</p>
+					<p class="text-justify"><strong>Es muy recomendable emplear siempre la palabra reservada <kbd>var</kbd> para declarar variables.</strong> La razón reside en la existencia de ámbitos. Cada declaración de variable está sujeta a un ámbito concreto, es decir, el ámbito determina el alcance de acceso que posee la variable. Cualquier uso de variable que no haya sido declarada anteriormente se considera global a todo el programa. Provoca posibles errores futuros que son difíciles de corregir.</p>
+					<pre><code class="language-javascript">/* Este es el ámbito global, también conocido como Window */
+var variableGlobalA = 1;
+variableGlobalB     = 2;
+
+function miFuncion() {
+	var variableLocal = 3;
+	variableGlobalC   = 4;
+	variableGlobalB   = 5;
+}
+
+console.log(variableGlobalA); // Imprime 1
+console.log(variableGlobalB); // Imprime 2
+console.log(variableLocal);   // Error de referencia: no está definida.
+console.log(variableGlobalC); // Error de referencia: no está definida.
+
+/* ¿Pero qué pasa cuando se ejecuta una única vez la función? */
+
+console.log(variableGlobalA); // Imprime 1
+console.log(variableGlobalB); /* Imprime 5 (!!) Puede provocar muchos
+fallos. Su estado depende de si se ha ejecutado anteriormente la función
+ o no. */
+console.log(variableLocal);   // Error de referencia: no está definida.
+console.log(variableGlobalC); /* Imprime 4 (!!) Su existencia depende
+de si se ha ejecutado o no la función. */</code></pre>
+					<p class="text-justify"><strong>La solución a posible quebraderos de cabeza, siempre declarar con la palabra reservada <kbd>var</kbd></strong>.</p>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Constantes</div>
+				<div class="panel-body">
+					<p class="text-justify">Es recomendable nombrar las constantes como <code>NOMBRE_DE_CONSTANTE</code>. También es útil emplear el tag <kbd>@const</kbd>.</p>
+					<pre><code class="language-javascript">/**
+ * Mi constante
+ * @const
+ */
+var MI_CONSTANTE = 3;</code></pre>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Enumeraciones</div>
+				<div class="panel-body">
+					<p class="text-justify">Aunque hay cierta libertad, es preferible seguir los convenios respecto al nombrado de enumeraciones. Una enumeración es un objeto cuyas claves están nombradas como constantes:</p>
+					<pre><code class="language-javascript">var EstadoPago = {
+	PENDIENTE  : 1,
+	PAGADO     : 2,
+	FINALIZADO : 3
+}
+
+console.log(EstadoPago.PAGADO); // Resultado: 2
+console.log(EstadoPago);
+// Resultado: Object { PENDIENTE=1, PAGADO=2, FINALIZADO=3}</code></pre>
+				</div>
+			</div>
+			<div class="pageControls">
+				<a id="next"><button type="button" class="btn btn-primary btn-sm"> </button></a>
+				<a id="previous"><button type="button" class="btn btn-default btn-sm"> </button></a>
+			</div>
+		</div>
+	</div>
+</div> <!-- .container-fluid -->
+<script src="js/vendor/prism.js"></script>
+<script>Prism.highlightAll();</script>

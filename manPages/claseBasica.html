@@ -1,0 +1,95 @@
+<!--
+-- @author David Soler <aensoler@gmail.com>
+-->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<ol class="breadcrumb">
+				<li><a href="#main">Index</a></li>
+			</ol>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Construcción de una clase básica</h3>
+				</div>
+				<div class="panel-body">
+					<p class="text-justify"><strong>Una clase es un conjunto de propiedades y métodos.</strong></p>
+					<ul>
+						<li><em>Propiedades</em>: variables que sirven para establecer el estado del objeto.</li>
+						<li><em>Métodos</em>: conjunto de funciones que definen el comportamiento del objeto.</li>
+					</ul>
+					<p class="text-justify">Definir una clase es muy sencillo en Javascript.</p>
+					<pre><code class="language-javascript">var Persona = function() {
+	// Propiedades (ya sean constantes, enumeraciones o variables)
+	this.especie = "Ser humano";
+	this.nombre  = undefined;
+	this.edad    = undefined;
+};
+
+Persona.prototype = {
+	getEspecie: function() {
+		return this.especie;
+	},
+	sayHello: function() {
+		console.log("Hola!");
+	}
+};
+
+var juan = new Persona();
+juan.nombre = "Juan";
+
+console.log(juan);
+// Resultado: Object { especie="Ser humano", nombre="Juan", edad=undefined, more...}</code></pre>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Método constructor</h3>
+				</div>
+				<div class="panel-body">
+					<p class="text-justify">Toda clase que se precie necesita un método constructor que es el encargado de construir adecuadamente un nuevo objeto.</p>
+					<p class="text-justify">La libertad de JavaScript permite hacerlo de cualquier forma, sin embargo, ésta es la más correcta:</p>
+					<pre><code class="language-javascript">var Persona = function() {
+	// Propiedades (ya sean constantes, enumeraciones o variables)
+	this.especie = "Ser humano";
+	this.nombre  = undefined;
+	this.edad    = undefined;
+
+	// Es obligatorio llamar al método constructor con los argumentos.
+	this.constructor.apply(this, arguments);
+};
+
+Persona.prototype = {
+	/**
+	 * Siempre que se crea un nuevo objeto este método es llamado.
+	 * @constructor
+	 */
+	constructor: function(nombre, edad) {
+		this.nombre = nombre;
+		this.edad   = edad;
+	},
+
+	getEspecie: function() {
+		return this.especie;
+	},
+
+	sayHello: function() {
+		console.log("Hola!");
+	}
+};
+
+var juan = new Persona("Juan", 25);
+juan.especie = "Alien?";
+
+console.log(juan);
+// Resultado: Object { especie="Alien?", nombre="Juan", edad=25, more...}</code></pre>
+				</div>
+			</div>
+			<div class="pageControls">
+				<a id="next"><button type="button" class="btn btn-primary btn-sm"> </button></a>
+				<a id="previous"><button type="button" class="btn btn-default btn-sm"> </button></a>
+			</div>
+		</div>
+	</div>
+</div> <!-- .container-fluid -->
+<script src="js/vendor/prism.js"></script>
+<script>Prism.highlightAll();</script>

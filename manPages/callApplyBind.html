@@ -1,0 +1,45 @@
+<!--
+-- @author David Soler <aensoler@gmail.com>
+-->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<ol class="breadcrumb">
+				<li><a href="#main">Index</a></li>
+			</ol>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">1.1 - Modificar el scope de una función</h3>
+				</div>
+				<div class="panel-body">
+					<p class="text-justify">Como hemos visto antes, la variable <kbd>this</kbd> referencia al scope existente en cada momento de la lógica del programa. Este scope varía cuando se produce un cambio en el contexto, por ejemplo, cuando se ejecuta una función determinada. ¿Es posible manipular esta referencia a nuestro gusto? La respuesta es si.</p>
+					<p class="text-justify">Existen tres funciones que manipulan el scope aunque se puede reducir el número a dos o incluso a una única función.</p>
+					<ul>
+						<li>bind(scope[, arg1, arg2, ...]): crea una función nueva con el scope y argumentos preestablecidos.</li>
+						<li>call(scope[, arg1, arg2, ...]): ejecuta la función con el scope y los argumentos suministrados. A grandes rasgos, el comportamiento de call es parecido a bind(...)(), es decir, si acto seguido de hacer el bind se ejecuta la función.</li>
+						<li>apply(scope[, arrayArgs]): su comportamiento es igual que call, sin embargo, los argumentos se deben pasar como un array.</li>
+					</ul>
+					<p class="text-justify">Esta capacidad de manipular el scope abre muchas posibilidades y usos avanzados. Si no se especifica el scope, entonces se define como aquel más general.</p>
+					<pre><code class="language-javascript">var juan = { nombre: "juan" },
+    jose = { nombre: "jose" };
+
+function capitalize(string) {
+	return string.charAt(0).toUpperCase()+string.slice(1);
+}
+
+capitalize(juan.nombre); // Resultado: "Juan"
+
+jose.getCapitalizedName = capitalize.bind(jose, jose.nombre);
+
+jose.getCapitalizedName(); // Resultado: "Jose"</code></pre>
+				</div>
+			</div>
+			<div class="pageControls">
+				<a id="next"><button type="button" class="btn btn-primary btn-sm"> </button></a>
+				<a id="previous"><button type="button" class="btn btn-default btn-sm"> </button></a>
+			</div>
+		</div>
+	</div>
+</div> <!-- .container-fluid -->
+<script src="js/vendor/prism.js"></script>
+<script>Prism.highlightAll();</script>

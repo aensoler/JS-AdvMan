@@ -1,0 +1,13 @@
+{
+	"name": "JS AdvMan",
+	"description": "Manual avanzado de JavaScript",
+	"launch_path": "/index.html",
+	"icons": {
+		"512": "/img/logo_JavaScript.png",
+	},
+	"developer": {
+		"name": "David Soler",
+		"email": "aensoler@gmail.com"
+	},
+	"default_locale": "es"
+}

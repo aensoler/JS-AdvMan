@@ -1,0 +1,22 @@
+/* Vendor imports */
+@import "vendor/bootstrap.min.css";
+@import "vendor/prism.css";
+
+/**
+ * @author David Soler <aensoler@gmail.com>
+ */
+body {
+	margin-bottom: 30px;
+}
+
+.pageControls {
+	position: relative;
+}
+
+.pageControls #next {
+	float: right;
+}
+
+.pageControls #previous {
+	float: left;
+}

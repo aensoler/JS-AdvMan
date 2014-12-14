@@ -1,0 +1,7 @@
+{
+	"name": "JS AdvMan",
+	"description": "Manual avanzado de JavaScript",
+	"version": "0.1",
+	"manifest_version": 2,
+	"icons": { "16": "img/logo_JavaScript.png"}
+}

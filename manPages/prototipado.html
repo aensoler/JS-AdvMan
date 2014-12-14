@@ -1,0 +1,65 @@
+<!--
+-- @author David Soler <aensoler@gmail.com>
+-->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<ol class="breadcrumb">
+				<li><a href="#main">Index</a></li>
+			</ol>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">2.1 - Prototipado</h3>
+				</div>
+				<div class="panel-body">
+					<p class="text-justify"><strong>Las clases en JavaScript no son iguales a las de Java. Pero gracias a la flexibilidad de JavaScript se pueden emular.</strong></p>
+					<p class="text-justify">¿Qué es una clase a grandes rasgos? Un esquema que confiere un comportamiento propio a un objeto concreto. Todo ello en JavaScript se puede conseguir con <kbd>prototype</kbd>.</p>
+					<p class="text-justify">Uno de los paradigmas de JavaScript es el de orientado a objetos, aunque aquí hay que resaltar muy bien que se basa en la tradicional programación orientada en objetos, sino en la programación basada en prototipos.</p>
+					<p class="text-justify"><strong>¿Qué es un prototipo? Es un objeto con un estado concreto del cuál otros nuevos objetos pueden clonar.</strong> Cualquier prototipo de cualquier objeto puede ser clonado, lo que abre grandes posibilidades y grandes problemas. <em>"Una gran poder conlleva una gran responsabilidad"</em>.</p>
+					<p class="text-justify">Qué ventajas ofrece:</p>
+					<ul>
+						<li>El comportamiento de un prototipo puede modificarse durante la ejecución. Lo que implica que cualquier objeto que referencie dicho prototipo cambiará su comportamiento en consonancia.</li>
+						<li>Al ser un objeto en sí, puede ser nombrado y llamado.</li>
+						<li>Todo objeto puede tener sus atributos y métodos propios, aquellos de su prototipo se heredan. <strong>Si heredan, la jerarquía de prototipos puede entenderse como herencia.</strong></li>
+					</ul>
+					<pre><code class="language-javascript">var Persona = function() {
+	this.especie = "Ser humano";
+	this.nombre = "";
+	this.diHola = function() {
+		console.log("Soy una persona y me llamo", this.nombre);
+	};
+};
+
+var Mujer = function(nombre) {
+	this.nombre = nombre;
+	this.diHola = function() {
+		console.log("Soy una mujer y me llamo", this.nombre);
+	};
+};
+
+/* Ahora existen dos objetos distintos, para que Mujer herede el
+comportamiento de Persona es necesario referenciar Persona como su prototipo. */
+Mujer.prototype = new Persona();
+
+// Creamos un objeto persona, cuyo prototipo es Object.
+var pedro = new Persona();
+
+// Creamos un objeto mujer, cuyo prototipo es Persona (cuya clase base es Object).
+var ana = new Mujer("Ana");
+
+pedro.diHola(); // Resultado: Soy una persona y me llamo (string vacío)
+
+ana.diHola();   // Resultado: Soy una mujer y me llamo Ana
+
+ana.especie;    // Resultado: "Ser humano"</code></pre>
+				</div>
+			</div>
+			<div class="pageControls">
+				<a id="next"><button type="button" class="btn btn-primary btn-sm"> </button></a>
+				<a id="previous"><button type="button" class="btn btn-default btn-sm"> </button></a>
+			</div>
+		</div>
+	</div>
+</div> <!-- .container-fluid -->
+<script src="js/vendor/prism.js"></script>
+<script>Prism.highlightAll();</script>

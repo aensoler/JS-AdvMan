@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+-- Página principal que actúa como esqueleto (mainpage).
+--
+-- @author David Soler <aensoler@gmail.com>
+-->
+<html lang="es-ES">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Javascript - Manual avanzado</title>
+
+		<!-- CARGA DE RECURSOS -->
+
+		<!-- Carga del framework jQuery para simplificar la sintaxis de JS -->
+		<script src="js/vendor/jquery-2.1.1.min.js"></script>
+		<!-- Carga del framework gráfico Bootstrap (correspondiente a la lógica) -->
+		<script src="js/vendor/bootstrap.min.js"></script>
+
+		<!-- Carga del cargador dinámico de páginas webs -->
+		<script src="js/DynamicLoader.class.js"></script>
+
+		<!-- Carga del gestor de la navegación -->
+		<script src="js/NavBar.class.js"></script>
+
+		<!-- Carga de la lógica principal de la aplicación -->
+		<script src="js/index.js"></script>
+
+		<!-- Carga de estilos -->
+		<link rel="stylesheet" href="css/index.css">
+	</head>
+	<body>
+		<div id="nav"> </div>
+		<div id="content">
+			<!-- (Yield) El contenido cargado se renderiza aquí. -->
+		</div>
+	</body>
+</html>
