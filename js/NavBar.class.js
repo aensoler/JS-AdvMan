@@ -64,12 +64,13 @@ var NavBar = function() {
 			return '<li><a href="#'+id+'">'+name+'</a></li>';
 		};
 
-		var previous = "";
+		var previous;
 		_menuItems.forEach(function(element, index, array) {
 			var el = $("#menu-"+element.parent+" ul.dropdown-menu");
 			el.append(createMenuSubItem(element.id, element.name));
 			element.previous = previous;
-			previous.next = element;
+			if (previous)
+				previous.next = element;
 			previous = element;
 		});
 	};
